@@ -2,6 +2,7 @@ import os
 from ij import IJ
 from ij.IJ import run, setThreshold, setAutoThreshold
 from ij.measure import ResultsTable as RT
+import csv
 
 
 
@@ -16,6 +17,10 @@ def files_list(files):
 	return files_list
 list_of_files = files_list(folder)
 
+verse1=['mean_intensity','mean_intensity_bg' ,'int_intensity','Area']
+with open(r'C:\Users\Zuzan\OneDrive\Pulpit\Klementyna\GitHub\stackoverflow_imageJ\data.csv','w') as f:
+	writer=csv.writer(f, delimiter='\t')
+	writer.writerow(verse1)
 
 for n in list_of_files[:4]:
 	print(n[0])
@@ -37,6 +42,7 @@ for n in list_of_files[:4]:
 	mean_intensity_bg = rt.getValue("Mean",1) 
 	int_intensity = rt.getValue("IntDen",0)
 	Area = rt.getValue("Area",0)
+	run("Close")
 	run("Close")
 	print(mean_intensity,mean_intensity_bg ,int_intensity,Area )
 	
