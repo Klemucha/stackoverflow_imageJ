@@ -17,7 +17,7 @@ def files_list(files):
 	return files_list
 list_of_files = files_list(folder)
 
-verse1=['mean_intensity','mean_intensity_bg' ,'int_intensity','Area']
+verse1=['mean_int','mean_int_bg' ,'int_intensity','area']
 with open(r'C:\Users\Zuzan\OneDrive\Pulpit\Klementyna\GitHub\stackoverflow_imageJ\data.csv','w') as f:
 	writer=csv.writer(f, delimiter='\t')
 	writer.writerow(verse1)
@@ -44,7 +44,13 @@ for n in list_of_files[:4]:
 	Area = rt.getValue("Area",0)
 	run("Close")
 	run("Close")
-	print(mean_intensity,mean_intensity_bg ,int_intensity,Area )
+	measurements=[mean_intensity,mean_intensity_bg ,int_intensity,Area ]
+	''''with open(r'C:\Users\Zuzan\OneDrive\Pulpit\Klementyna\GitHub\stackoverflow_imageJ\data.csv','a') as f:
+		writer=csv.writer(f, delimiter='\t')
+		f.seek(0, 2)  # Przesuń kursor na koniec pliku
+        if f.tell() > 0
+        	f.write('\n')
+		writer.writerow(measurements)
 	
 	#chcę to wszystko zapisać w pliku i najlepiej jeszcze nazwę pliku .csv .tsv (taby - /T?) i jeszcze zadbac zeby bylo wszystko od nowej linii (otworzyc plik, zapisac, zamknac plik) - zadanie domowe:)
 
