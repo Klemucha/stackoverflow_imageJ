@@ -22,26 +22,28 @@ with open(r'C:\Users\Zuzan\OneDrive\Pulpit\Klementyna\GitHub\stackoverflow_image
 	writer=csv.writer(f, delimiter='\t')
 	writer.writerow(verse1)
 
-for n in list_of_files[:4]:
-	print(n[0])
-	im = IJ.open(n[0])
+
+for n in list_of_files[:5]:
+	print(n[0])						 #n[0] czyli pierwszy element w n (u nas ścieżka do pliku)
+	im = IJ.open(n[0]) 				#otwieramy plik
 	run("Duplicate...", " ");
 	img = IJ.openImage(n[0]);
 	setAutoThreshold(img,"Otsu");
 	run("Threshold...");
 	run("Convert to Mask");
 	run("Create Selection");
-	run("Close")
-	run("Close")
+	run("Close")					#zamknięcie okienka threshold
+	run("Close")					#zamknięcie pliku na którym pracujemy
 	run("Restore Selection");
 	run("Measure");
 	run("Make Inverse");
 	run("Measure");
-	rt = RT.getResultsTable()
+''''	rt = RT.getResultsTable()
 	mean_intensity=rt.getValue("Mean",0) 
 	mean_intensity_bg=rt.getValue("Mean",1) 
 	int_intensity=rt.getValue("IntDen",0)
 	Area = rt.getValue("Area",0)
+	run("Close")
 	run("Close")
 	run("Close")
 	measurements=[n[1],mean_intensity,mean_intensity_bg,int_intensity,Area]
