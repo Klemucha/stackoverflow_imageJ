@@ -44,7 +44,7 @@ for n in list_of_files[:4]:
 	Area = rt.getValue("Area",0)
 	run("Close")
 	run("Close")
-	measurements=[mean_intensity,mean_intensity_bg,int_intensity,Area]
+	measurements=[n[1],mean_intensity,mean_intensity_bg,int_intensity,Area]
 	print(measurements)
 	with open(r'C:\Users\Zuzan\OneDrive\Pulpit\Klementyna\GitHub\stackoverflow_imageJ\data.csv','a') as f:
 		writer=csv.writer(f, delimiter='\t')
