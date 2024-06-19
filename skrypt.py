@@ -23,7 +23,7 @@ with open(r'C:\Users\Zuzan\OneDrive\Pulpit\Klementyna\GitHub\stackoverflow_image
 	writer.writerow(verse1)
 
 
-for n in list_of_files[:1]:
+for n in list_of_files[:5]:
 	print(n[1])						 #n[0] czyli pierwszy element w n (u nas ścieżka do pliku)
 	im = IJ.open(n[0]) 				#otwieramy plik
 	run("Duplicate...", " ");
@@ -52,7 +52,7 @@ for n in list_of_files[:1]:
 		if f.tell() > 0:
 				f.write('\n')
 		writer.writerow(measurements)
-		'''
+	
 	run("Close")
 	run("Close")
 	run("Close")
