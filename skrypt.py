@@ -23,8 +23,8 @@ with open(r'C:\Users\Zuzan\OneDrive\Pulpit\Klementyna\GitHub\stackoverflow_image
 	writer.writerow(verse1)
 
 
-for n in list_of_files[:5]:
-	print(n[0])						 #n[0] czyli pierwszy element w n (u nas ścieżka do pliku)
+for n in list_of_files[:1]:
+	print(n[1])						 #n[0] czyli pierwszy element w n (u nas ścieżka do pliku)
 	im = IJ.open(n[0]) 				#otwieramy plik
 	run("Duplicate...", " ");
 	img = IJ.openImage(n[0]);
@@ -32,20 +32,18 @@ for n in list_of_files[:5]:
 	run("Threshold...");
 	run("Convert to Mask");
 	run("Create Selection");
-	run("Close")					#zamknięcie okienka threshold
-	run("Close")					#zamknięcie pliku na którym pracujemy
+	IJ.selectWindow("Threshold")
+	run("Close")	#zamknięcie okienka threshold
+	IJ.selectWindow("P4\\" + n[1])   #wywołanie oryginalnego pliku
 	run("Restore Selection");
 	run("Measure");
 	run("Make Inverse");
 	run("Measure");
-''''	rt = RT.getResultsTable()
+	rt = RT.getResultsTable()
 	mean_intensity=rt.getValue("Mean",0) 
 	mean_intensity_bg=rt.getValue("Mean",1) 
 	int_intensity=rt.getValue("IntDen",0)
 	Area = rt.getValue("Area",0)
-	run("Close")
-	run("Close")
-	run("Close")
 	measurements=[n[1],mean_intensity,mean_intensity_bg,int_intensity,Area]
 	print(measurements)
 	with open(r'C:\Users\Zuzan\OneDrive\Pulpit\Klementyna\GitHub\stackoverflow_imageJ\data.csv','a') as f:
@@ -54,6 +52,11 @@ for n in list_of_files[:5]:
 		if f.tell() > 0:
 				f.write('\n')
 		writer.writerow(measurements)
+		'''
+	run("Close")
+	run("Close")
+	run("Close")
+
 	
 	#chcę to wszystko zapisać w pliku i najlepiej jeszcze nazwę pliku .csv .tsv (taby - /T?) i jeszcze zadbac zeby bylo wszystko od nowej linii (otworzyc plik, zapisac, zamknac plik) - zadanie domowe:)
 
